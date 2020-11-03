@@ -1,0 +1,7 @@
+spring:
+  ldap:
+    #urls: ldaps://ADLDAP.CNOOC:636
+    username: ex_gaojun
+    password: SZLtd@2018
+    base: DC=global,DC=cnooc,DC=corp
+    urls: ldap://10.68.100.211:636

@@ -1,0 +1,15 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: icezerocat-adServer
+
+  profiles:
+    active: prod
+
+  ldap:
+    urls: ldap://192.168.216.131:389
+    username: zero
+    password: p@ssw0rd
+    base: DC=shuo,DC=vip
