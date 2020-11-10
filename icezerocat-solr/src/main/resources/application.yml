@@ -1,0 +1,11 @@
+server:
+  port: 9006
+
+spring:
+  application:
+    name: icezerocat-solr
+
+  data:
+    solr:
+      #host: http://127.0.0.1:8080/solr/collection1
+      host: http://127.0.0.1:8983/solr
