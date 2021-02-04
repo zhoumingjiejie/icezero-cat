@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="undo_log-01" author="zero">
+        <createTable tableName="undo_log" remarks="seata事务操作记录undo">
+            <column name="id" type="varchar(64)" remarks="id">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="branch_id" type="varchar2(255)"/>
+            <column name="xid" type="varchar2(255)"/>
+            <column name="context" type="varchar2(255)"/>
+            <column name="rollback_info" type="BLOB"/>
+            <column name="log_status" type="int(11)"/>
+            <column name="log_created" type="datetime"/>
+            <column name="log_modified" type="datetime"/>
+            <column name="ext" type="varchar2(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
