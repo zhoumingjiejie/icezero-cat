@@ -1,0 +1,10 @@
+spring:
+  #数据库配置
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://192.168.0.46:3306/raymon-consultation?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: raymon
+      driver-class-name: com.mysql.cj.jdbc.Driver
