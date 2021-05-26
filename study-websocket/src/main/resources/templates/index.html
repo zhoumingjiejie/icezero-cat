@@ -21,13 +21,14 @@ Welcome<br/>
     var userName = "zero";
     var websocket = null;
     var host = window.location.host;
+    var token = 'token=3c7cf9e2-e4f8-45fa-b2a0-c65f8f9b4f2e&appId=1440000014&requestId=ew5IMQrQvwEqMecABTqOxHmQEjvO4MRU';
     document.getElementById('ip').value = host;
     connection();
 
     function connection() {
         var ip = document.getElementById('ip');
         console.log(ip.value);
-        websocket = new WebSocket("ws://" + ip.value + "/websocket/socket/" + userName);
+        websocket = new WebSocket("ws://" + ip.value + "/websocket/socket/" + userName + "?" + token);
         //连接发生错误的回调方法
         websocket.onerror = function () {
             setMessageInnerHTML("error");

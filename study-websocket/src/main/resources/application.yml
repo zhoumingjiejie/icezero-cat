@@ -22,3 +22,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8076/eureka
+      #defaultZone: http://86.12.160.63:8076/eureka
+
+
+#纬度: 22.765403<br>经度: 108.30825	21-5-25 下午11:35

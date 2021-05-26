@@ -2,12 +2,15 @@ package com.github.icezerocat.study.websocket.socket;
 
 import org.springframework.stereotype.Component;
 
-import javax.websocket.*;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -56,11 +59,7 @@ public class WebSocketServer {
         sessionPools.put(userName, session);
         addOnlineCount();
         System.out.println(userName + "加入webSocket！当前人数为" + online);
-        try {
-            sendMessage(session, "欢迎" + userName + "加入连接！");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        onMessage("欢迎" + userName + "加入连接！");
     }
 
     /**
@@ -73,6 +72,7 @@ public class WebSocketServer {
         sessionPools.remove(userName);
         subOnlineCount();
         System.out.println(userName + "断开webSocket连接！当前人数为" + online);
+        this.sendInfo("zero", "用户" + userName + "已下线");
     }
 
     /**
@@ -82,9 +82,10 @@ public class WebSocketServer {
      */
     @OnMessage
     public void onMessage(String message) {
+        System.out.println("消息：" + message);
         for (Session session : sessionPools.values()) {
             try {
-                sendMessage(session, message);
+                sendMessage(session, message + "(用户总数:" + online + ")  " + new SimpleDateFormat().format(new Date()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -101,7 +102,7 @@ public class WebSocketServer {
         System.out.println(userName + ":" + message);
         Session session = sessionPools.get(userName);
         try {
-            sendMessage(session, userName + ":" + message);
+            sendMessage(session, userName + ":" + message + "(用户总数:" + online + ")  " + new SimpleDateFormat().format(new Date()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,5 +120,36 @@ public class WebSocketServer {
      */
     private static void subOnlineCount() {
         online.decrementAndGet();
+    }
+
+    /**
+     * 关闭全部连接
+     *
+     * @return 返回链接人数
+     */
+    public static int closeAll() {
+        for (String userName : sessionPools.keySet()) {
+            sessionPools.remove(userName);
+            subOnlineCount();
+        }
+        return online.get();
+    }
+
+    /**
+     * 获取在线人数
+     *
+     * @return 在线人数
+     */
+    public static int onlineCount() {
+        return online.get();
+    }
+
+    /**
+     * 获取在线用户
+     *
+     * @return 在线用户
+     */
+    public static Set<String> onlineUser() {
+        return new HashSet<>(sessionPools.keySet());
     }
 }
