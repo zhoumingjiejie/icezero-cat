@@ -4,7 +4,12 @@ spring:
     name: druidDataSource
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://192.168.0.46:3306/raymon-consultation?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://127.0.0.1:3306/raymon-consultation?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
       username: root
-      password: raymon
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+
+
