@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: native, guangdong-dev
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+#            - classpath:/
+            - classpath:/guangdong/
+            - classpath:/config/
+            - classpath:/config/configclient/
+            - classpath:/config/guangdong/
+            - file:./
+#            - file:./config/*/
+            - file:./config/
