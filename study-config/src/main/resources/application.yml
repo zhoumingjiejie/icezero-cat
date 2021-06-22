@@ -1,5 +1,5 @@
 server:
-  port: 8889
+  port: 8888
 spring:
   application:
     name: configserver
@@ -11,6 +11,7 @@ spring:
         native:
           search-locations:
 #            - classpath:/
+            - classpath:/configclient/
             - classpath:/guangdong/
             - classpath:/default/
             - classpath:/config/

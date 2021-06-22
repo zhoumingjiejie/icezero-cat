@@ -5,8 +5,8 @@ spring:
     name: configclient
   cloud:
     config:
-      name: guangdong
-      profile: dev, auth-dev
+      name: configclient, guangdong
+      profile: dev
       discovery:
         service-id: configserver
         enabled: true
