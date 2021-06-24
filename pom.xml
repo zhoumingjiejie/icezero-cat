@@ -6,13 +6,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
+        <version>2.5.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.githup.ice-zero-cat</groupId>
     <artifactId>icezero-study</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>icezero-study</name>
     <packaging>pom</packaging>
     <description>Spring Boot study</description>
@@ -29,6 +29,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <core.version>0.0.3</core.version>
+        <!--config地方版本-->
+        <config-project.version>default</config-project.version>
+        <!--config版本使用分支-->
+        <config-project.label.version>dev</config-project.label.version>
     </properties>
 
     <dependencies>
@@ -57,4 +61,37 @@
 
     </dependencies>
 
+    <profiles>
+        <!--分支版本-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <config-project.label.version>dev</config-project.label.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <config-project.label.version>test</config-project.label.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <config-project.label.version>release</config-project.label.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>version-guangdong</id>
+            <properties>
+                <config-project.version>guangdong</config-project.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>version-configclient</id>
+            <properties>
+                <config-project.version>configclient</config-project.version>
+            </properties>
+        </profile>
+    </profiles>
 </project>
