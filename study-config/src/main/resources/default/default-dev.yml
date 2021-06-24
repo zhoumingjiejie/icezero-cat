@@ -1,1 +1,3 @@
 debug: false
+my:
+  config: default

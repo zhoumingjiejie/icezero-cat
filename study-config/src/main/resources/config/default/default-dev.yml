@@ -1,2 +1,4 @@
 debug: false
 hello: world
+my:
+  config: default-dev
