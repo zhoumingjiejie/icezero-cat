@@ -10,3 +10,7 @@ spring:
       discovery:
         service-id: configserver
         enabled: true
+      uri:
+        - 'http://1.1.1.1:8888'
+        - 'http://172.20.1.9:8888'
+        - http://raymon.zhfw.config.mysql.${config.project.branch:dev}:8888
