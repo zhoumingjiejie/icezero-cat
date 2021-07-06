@@ -1,0 +1,4 @@
+# Zero Mp Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.icezerocat.study.autoconfigure.config.B_ParentConfig,\
+  com.github.icezerocat.study.autoconfigure.config.A_SonConfig

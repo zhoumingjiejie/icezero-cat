@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>github.com.icezerocat</groupId>
+    <artifactId>study-jsm-oracle-aq</artifactId>
+    <version>0.0.1</version>
+    <name>study-jsm-oracle-aq</name>
+    <description>oracle数据表监听</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+
+        <!--mybatisPlus-->
+        <dependency>
+            <groupId>com.github.ice-zero-cat</groupId>
+            <artifactId>component-mp-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!--db-->
+        <dependency>
+            <groupId>com.github.ice-zero-cat</groupId>
+            <artifactId>component-db-spring-boot-starter</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!--common模块-->
+        <dependency>
+            <groupId>com.github.ice-zero-cat</groupId>
+            <artifactId>component-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.jms</groupId>
+            <artifactId>jms</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <!--本地jar包-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>jmscommon</artifactId>
+            <version>1.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/jmscommon.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>1.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/orai18n.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/jta.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>aqapi_g</artifactId>
+            <version>1.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/aqapi_g.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <!-- 远程仓库列表 -->
+    <repositories>
+        <!--官网：http://repo1.maven.org/maven2/-->
+        <repository>
+            <id>repo1</id>
+            <name>repo1</name>
+            <url>http://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>
+                    true
+                </enabled>
+            </releases>
+            <snapshots>
+                <enabled>
+                    true
+                </enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <extdirs>${project.basedir}/src/main/resources/lib</extdirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

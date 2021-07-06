@@ -1,0 +1,19 @@
+spring:
+  #数据库配置
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/raymon-consultation?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+queue:
+  aq:
+    # 该队列是否可用，用来控制队列的加载和重连，不可省略
+    enable: true
+    # 队列名称，不可省略
+    name: QUEUE_TEST
+    # 队列重连的定时任务对应的时间表达式，不可省略
+    cron: 0 */1 * * * ?
